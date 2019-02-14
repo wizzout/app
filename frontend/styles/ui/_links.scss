@@ -1,0 +1,31 @@
+a {
+	color: $c-link;
+	border-bottom: 0.1em solid $c-link;
+	text-decoration: none;
+	transition: color $t-default, border-color $t-default;
+
+	&:hover,
+	&:active {
+		color: $c-link-hover;
+		border-bottom-color: $c-link-hover;
+	}
+
+	&.overlay {
+		border: 0;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		z-index: 2;
+		font-size: 0;
+		color: transparent;
+		background: transparent;
+		opacity: 0;
+		transition: none;
+	}
+}
+
+.link {
+	border-bottom-color: transparent;
+}

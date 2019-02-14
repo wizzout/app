@@ -1,20 +1,36 @@
-$icon-font-path: '../fonts/';
-
-@import "../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
-
 @import "variables";
+@import "mixins";
+// reseting with sass version of normalize.css
+@import "systematize/systematize";
+
+// import whole bootstrap or only parts of it;
+// !!! IMPORTANT !!! this template depends on bootstrap media mixins;
+//@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap/scss/bootstrap-grid';
+
 @import "fonts";
 
-@import "modules/browsehappies";
-@import "modules/buttons";
-@import "modules/forms";
-@import "modules/icons";
-@import "modules/links";
-@import "modules/logos";
-@import "modules/modals";
-@import "modules/navs";
-@import "modules/titles";
-
 @import "layout";
+
+//generated sprite styles
+@import 'generated/svg-sprite.scss';
+
+
+
+@import "ui/themes";
+@import "ui/links";
+@import "ui/buttons";
+@import "ui/navs";
+@import "ui/form";
+
+@import "modules/browsehappies";
+@import "modules/header";
+@import "modules/footer";
+
+@import "rf-link";
 @import "hacks";
 @import "media";
+
+
+// can exclude if unneded
+@import "ui-kit";

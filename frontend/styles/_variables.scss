@@ -1,18 +1,169 @@
 
 // fonts
-$font-primary-regular: 'PTSans-Regular', Helvetica, Arial, sans-serif;
-$font-primary-bold: 'PTSans-Bold', Helvetica, Arial, sans-serif;
 
-$font-secondary-regular: Helvetica, Arial, sans-serif;
+$f-family: 'Open Sans', sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
-$font-icons: 'websymbolsligaregular';
+$f-title:  'Roboto Slab', sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
-$font-numbers: 'Helvetica Neue', Arial, sans-serif;
+// $f-sb: 'Cignika-Semibold', Helvetica, Arial, sans-serif;
+// $f-light: 'Cignika-Light', Helvetica, Arial, sans-serif;
+
+// $f-serif: Times, serif;
 
 // colors
-$color-primary: #000;
-$color-secondary: #000;
-$color-gray: #e6e6e6;
+$c-default: #161616;
+$c-white: #fff;
+
+
+//theme
+
+$themes: (
+  1: #14a0d1,
+  2: #f04d2a,
+  3: #ffdc5e,
+  4: #639a28,
+  5: #2d5009
+);
+
+
+$c-base: #14a0d1;
+$c-base-light: lighten($c-base, 10%);
+$c-base-dark: darken($c-base, 10%);
+
+
+$c-grey: #ededed;
+$c-grey-light: #f2f2f2;
+$c-grey-dark: #70737c;
+$c-grey-text: #aaadb2;
+
+$c-link: $c-base;
+$c-link-hover: $c-base-dark;
+
+$c-button: $c-base;
+$c-button-hover: $c-base-light;
+
+// inline svg loader
+$loader-color: $c-base-light;
+
+$c-error: #fd3221;
 
 // transitions
-$transition-primary: .3s;
+$t-default: .15s ease-out;
+
+$c-border: #d9d9d9;
+$c-border-hover: darken($c-border, 10%);
+$c-border-active: darken($c-border, 20%);
+
+$c-hl: $c-base;
+
+//переопределение цвета логотипа (раскомментируй нужные переменные)
+$rf-logo-def-color: $c-default;
+$rf-logo-hover-color: $c-hl;
+// $rf-logo-icon-color: $c-grey-light;
+
+// определение custom-variables, которые потом пойдут в код. 
+
+// цвет фона выделения текста
+$sys-selection-background: lighten($c-base, 40%);
+
+
+
+@function line($color, $height: 1){
+  @return'<svg width="2" height="#{$height}" viewBox="0 0 2 1" xmlns="http://www.w3.org/2000/svg"><path d="M.5.5h1" fill-rule="nonzero" stroke="#{$color}" fill="none" stroke-linecap="square"/></svg>'
+};
+
+
+
+// animated loader for inlineSvg(....) use
+@function svg-load($color: $loader-color, $size: 50){
+  @return '<svg width="#{50}" height="#{50}" viewBox="0 0 100 99" xmlns="http://www.w3.org/2000/svg"  preserveAspectRatio="xMidYMid"> <defs> <radialGradient cx="72.443%" cy="0%" fx="72.443%" fy="0%" r="100%" id="a"> <stop stop-color="#{$color}" stop-opacity="0" offset="0%" /> <stop stop-color="#{$color}" offset="4.572%" /> <stop stop-color="#{$color}" stop-opacity=".744" offset="54.279%" /> <stop stop-color="#{$color}" stop-opacity="0" offset="100%" /> </radialGradient> </defs><g><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" keyTimes="0;1" dur="1.4s" repeatCount="indefinite" /><path d="M50 100C22.386 100 0 77.614 0 50S22.386 0 50 0s50 22.386 50 50-22.386 50-50 50zm0-5c24.853 0 45-20.147 45-45S74.853 5 50 5 5 25.147 5 50s20.147 45 45 45z" fill="url(#a)" fill-rule="nonzero" /></g></svg>';
+}
+
+@function arrow($color: #000, $prev:false){
+  $transform: '';
+  //$transform: ' transform="rotate(180 9 5)" ';
+  @if  $prev == true {
+    $transform: ' transform="rotate(180 9 5)" ';
+  } 
+  @return '<svg xmlns="http://www.w3.org/2000/svg" width="23" height="63" fill="none" viewBox="0 0 23 63"><path stroke="#{$color}" #{$transform}stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M1 62l21-30.3L1 1"/></svg>';
+}
+
+
+@function inlineSvg($svg){
+  //
+  //  Add missing namespace
+  //
+  @if not str-index($svg,xmlns) {
+      $svg: str-replace($svg, '<svg','<svg xmlns="http://www.w3.org/2000/svg"');   
+  }        
+  //    
+  //  Chunk up string in order to avoid 
+  //  "stack level too deep" error
+  //     
+  $encoded:'';
+  $slice: 2000;
+  $index: 0;
+  $loops: ceil(str-length($svg)/$slice);
+  @for $i from 1 through $loops {
+      $chunk: str-slice($svg, $index, $index + $slice - 1); 
+      //
+      //   Encode 
+      //
+      $chunk: str-replace($chunk,'"', '\'');
+      $chunk: str-replace($chunk,'%', '%25');
+      $chunk: str-replace($chunk,'&', '%26');
+      $chunk: str-replace($chunk,'#', '%23');       
+      $chunk: str-replace($chunk,'{', '%7B');
+      $chunk: str-replace($chunk,'}', '%7D');         
+      $chunk: str-replace($chunk,'<', '%3C');
+      $chunk: str-replace($chunk,'>', '%3E');   
+      $encoded: #{$encoded}#{$chunk};
+      $index: $index + $slice; 
+  }
+  @return url("data:image/svg+xml,#{$encoded}");   
+}
+
+//  Helper function to replace characters in a string
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search); 
+  @return if($index, 
+      str-slice($string, 1, $index - 1) + $replace + 
+      str-replace(str-slice($string, $index + 
+      str-length($search)), $search, $replace), 
+      $string); 
+}
+
+
+
+
+// bootstrap grid vars 
+
+$grid-columns: 12;
+$grid-gutter-width: 32px;
+
+// $grid-breakpoints: (
+//   // Extra small screen / phone
+//   xs: 0,
+//   // Small screen / phone
+//   sm: 767px,
+//   // Medium screen / tablet
+//   md: 768px,
+//   // Large screen / desktop
+//   lg: 1180px,
+//   // Extra large screen / wide desktop
+//   xl: 1600px
+// );
+
+// $container-max-widths: (
+//   sm: 540px,
+//   md: 720px,
+//   lg: 1180px,
+//   xl: 1600px
+// );
+
+
+// CSS custom properties declaration at root level 
+
+:root {
+  
+}

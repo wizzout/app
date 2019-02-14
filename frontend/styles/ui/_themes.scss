@@ -1,0 +1,20 @@
+
+// configure variable $themes in variables.scss
+
+
+.bg-theme {
+
+  @each $key, $color in $themes {
+      &--#{$key} {
+        background-color: $color;
+      }
+    }
+}
+
+.text-theme {
+    @each $key, $color in $themes {
+      &--#{$key} {
+        color: $color;
+      }
+    }
+}

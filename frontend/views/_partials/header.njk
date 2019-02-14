@@ -2,5 +2,14 @@
 <header class="header">
   <div class="container">
   	<p>This is header!</p>
+    <nav class="nav nav--main">
+      <ul>
+        {% for item in DATA.navs.main %}
+          <li>
+            <a href="{{item.link}}" class="nav__link link{{' active' if item.isActive}}">{{item.title}}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
   </div>
 </header>

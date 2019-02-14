@@ -1,0 +1,159 @@
+{% set title = 'UI-Kit' %}
+{% set indexPage = true %}
+
+{% extends "layouts/default.njk" %}
+
+{% block content %}
+<main class="main">
+  <section class="ui-kit">
+    <div class="container">
+      <div class="ui-kit__block">
+        <h1>Заголовок h1</h1>
+        <h2>Заголовок h2</h2>
+        <h3>Заголовок h3</h3>
+        <h4>Заголовок h4</h4>
+        <h5>Заголовок h5</h5>
+        <h6>Заголовок h6</h6>
+        <p class="big strong">Текст .big .strong</p>
+        <p>Простой текст</p>
+      </div><!-- .ui-kit__block -->
+      <div class="ui-kit__block">
+        <div class="row">
+          <div class="col">
+            <div class="ui-kit__color bg-theme--1"></div>
+          </div><!-- .col -->
+          <div class="col">
+            <div class="ui-kit__color bg-theme--2"></div>
+          </div><!-- .col -->
+          <div class="col">
+            <div class="ui-kit__color bg-theme--3"></div>
+          </div><!-- .col -->
+          <div class="col">
+            <div class="ui-kit__color bg-theme--4"></div>
+          </div><!-- .col -->
+          <div class="col">
+            <div class="ui-kit__color bg-theme--5"></div>
+          </div><!-- .col -->
+        </div><!-- .row -->
+      </div><!-- .ui-kit__block -->
+
+
+    <div class="ui-kit__block">
+      <span class="ui-kit__label">Текст (темы)</span><!-- .ui-kit__label -->
+      <div class="row">
+        <div class="col">
+          <div class="ui-kit__text text-theme--1">Цветной текст</div>
+          <code>.text-theme--1</code>
+        </div><!-- .col -->
+        <div class="col">
+          <div class="ui-kit__text text-theme--2">Цветной текст</div>
+          <code>.text-theme--2</code>
+        </div><!-- .col -->
+        <div class="col">
+          <div class="ui-kit__text text-theme--3">Цветной текст</div>
+          <code>.text-theme--3</code>
+        </div><!-- .col -->
+        <div class="col">
+          <div class="ui-kit__text text-theme--4">Цветной текст</div>
+          <code>.text-theme--4</code>
+        </div><!-- .col -->
+        <div class="col">
+          <div class="ui-kit__text text-theme--5">Цветной текст</div>
+          <code>.text-theme--5</code>
+        </div><!-- .col -->
+      </div><!-- .row -->
+    </div><!-- .ui-kit__block -->
+    
+    
+    <div class="ui-kit__block">
+      <span class="ui-kit__label">Кнопки</span><!-- .ui-kit__label -->
+      <table class="ui-kit__table">
+        <thead>
+          <tr>
+            <th></th>
+            <th><code>.button .button--icon</br> (.button--icon-big)</code></th>
+            <th><code>.button .button--default</code></th>
+            <th><code>.button .button--hollow</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><code>:disabled .is-disabled</code></th>
+            <td>
+              <button type="button" disabled class="button button--icon">{{icon('arrow')}}</button> &nbsp;&nbsp;&nbsp;
+              <button type="button" disabled class="button button--icon button--icon-big">{{icon('arrow')}}</button>
+            </td>
+            <td>
+              <button type="button" disabled class="button button--default">Кнопка 1</button>
+            </td>
+            <td>
+              <button type="button" disabled class="button button--hollow">Кнопка 2</button>
+            </td>
+          </tr>
+          <tr>
+            <th>Статичное состояние</th>
+            <td>
+              <button type="button" class="button button--icon">{{icon('arrow')}}</button> &nbsp;&nbsp;&nbsp;
+              <button type="button" class="button button--icon button--icon-big">{{icon('arrow')}}</button>
+            </td>
+            <td>
+              <button type="button" class="button button--default">Кнопка 1</button>
+            </td>
+            <td>
+              <button type="button" class="button button--hollow">Кнопка 2</button>
+            </td>
+          </tr>
+          <tr>
+            <th><code>:hover .is-hover</code></th>
+            <td>
+              <button type="button" class="button is-hover button--icon">{{icon('arrow')}}</button> &nbsp;&nbsp;&nbsp;
+              <button type="button" class="button is-hover button--icon button--icon-big">{{icon('arrow')}}</button>
+            </td>
+            <td>
+              <button type="button" class="button is-hover button--default">Кнопка 1</button>
+            </td>
+            <td>
+              <button type="button" class="button is-hover button--hollow">Кнопка 2</button>
+            </td>
+          </tr>
+          <tr>
+            <th><code>:active .is-active</code></th>
+            <td>
+              <button type="button" class="button is-active button--icon">{{icon('arrow')}}</button> &nbsp;&nbsp;&nbsp;
+              <button type="button" class="button is-active button--icon button--icon-big">{{icon('arrow')}}</button>
+            </td>
+            <td>
+              <button type="button" class="button is-active button--default">Кнопка 1</button>
+            </td>
+            <td>
+              <button type="button" class="button is-active button--hollow">Кнопка 2</button>
+            </td>
+          </tr>
+        </tbody>
+      </table><!-- .ui-kit__table -->
+    </div><!-- .ui-kit__block -->
+    <div class="ui-kit__block">
+      <span class="ui-kit__label">Ссылки</span><!-- .ui-kit__label -->
+      <div class="row">
+        <div class="col">
+          <article class="article" style="max-width: 500px;">
+            В нем собраны <a href="#">произведения</a> из альбомов артиста, которые впервые аранжированы и укомплектованы в
+            одном сборнике. 
+          </article><!-- .article -->
+    
+          <a href="#" class="link">Ссылка с классом</a> <code>.link</code>
+        </div><!-- .col -->
+
+      </div><!-- .row -->
+    </div><!-- .ui-kit__block -->
+    
+    <div class="ui-kit__block">
+      <span class="ui-kit__label">Логотип ракетной фирмы</span><!-- .ui-kit__label -->
+      <div class="" style="margin-top: 20px;">
+        {% include "_partials/rf-link.njk" %}
+      </div><!-- .bg-theme text-light -->
+    </div><!-- .ui-kit__block -->
+    </div><!-- .container -->
+  </section><!-- .ui-kit -->
+</main> <!-- end main -->
+{% endblock %}

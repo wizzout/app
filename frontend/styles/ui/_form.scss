@@ -1,0 +1,116 @@
+//reseting some styles
+input {
+  appearance: none;
+}
+textarea {
+  resize: vertical;
+  appearance: none;
+}
+
+select {
+  appearance: none;
+  outline: none !important;
+  cursor: pointer;
+  transition: $t-default;
+}
+
+// input[type=submit]{
+//   border: none;
+// }
+
+.form {
+
+  // &__group {
+  //   margin-bottom: 16px;
+
+  //   @include media-breakpoint-up(lg) {
+  //     margin-bottom: 30px;
+  //   }
+  // }
+
+
+  // &__field {
+  //   height: 45px;
+  //   padding: 10px 16px 12px;
+  //   font-family: $f-family;
+  //   width: 100%;
+  //   font-weight: 600;
+  //   font-size: 18px;
+  //   border: 1px solid $c-border;
+  //   background: $c-grey;
+  //   border-radius: 3px;
+  //   box-shadow: none;
+  //   outline: none;
+  //   transition: border $t-default;
+
+  //   @include media-breakpoint-up(lg) {
+  //     height: 70px;
+  //     font-size: 30px;
+  //   }
+
+  //   &:hover {
+  //     border-color: $c-border-hover;
+  //     transition: none;
+  //   }
+
+  //   &:focus,
+  //   &:active {
+  //     border-color: $c-border-active;
+  //     box-shadow: 0 0 5px rgba($c-hl,.3); 
+  //     transition: none;
+  //   }
+  //   &::-webkit-input-placeholder {
+  //     -webkit-font-smoothing: antialiased;
+  //     -moz-osx-font-smoothing: grayscale;
+  //   }
+  //   &:-moz-placeholder {
+  //     -webkit-font-smoothing: antialiased;
+  //     -moz-osx-font-smoothing: grayscale;
+  //   }
+  //   &::-moz-placeholder {
+  //     -webkit-font-smoothing: antialiased;
+  //     -moz-osx-font-smoothing: grayscale;
+  //   }
+  //   &:-ms-input-placeholder {
+  //     -webkit-font-smoothing: antialiased;
+  //     -moz-osx-font-smoothing: grayscale;
+  //   }  
+  // }
+  
+  
+  // &__label {
+    
+  //   margin-bottom: 5px;
+  //   display: inline-block;
+  //   cursor: default;
+
+  //   @include media-breakpoint-down(sm) {
+  //     font-size: 14px;
+  //   }
+
+  //   .is-required &{
+  //     &:before {
+  //       content: '* ';
+  //       color: $c-hl;
+  //     }
+  //   }
+  // }
+
+  // &__button {
+  //   width: 100%;
+  //   text-align: center;
+  // }
+
+}
+
+
+// textarea.form__field {
+//   height: auto;
+//   min-height: 105px;
+//   max-height: 300px;
+
+//   @include media-breakpoint-up(lg) {
+//     max-height: 500px;
+//     min-height: 120px;
+//   }
+// }

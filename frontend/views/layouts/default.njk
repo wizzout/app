@@ -1,9 +1,14 @@
+{# import data #}
+{%- import "_data/data.njk" as DATA with context -%}
+{# import icon macro to use svg icons from sprite #}
+{%- from "_partials/mixins.njk" import icon -%}
+
 <!doctype html>
 <html class="no-js" lang="">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Шаблон верстки Ракетной фирмы</title>
+    <title>{{title + ' — ' if title}}{{DATA.siteTitle}}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
@@ -33,40 +38,32 @@
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-    
-    {# import some variable from ../_partials/variables.njk file and use it later if needed #}
-    {% from "_partials/variables.njk" import developers %} 
-    
-    {% include "_partials/modal.njk" %}
-    {% include "_partials/header.njk" %}
+    {% if not indexPage %}
+      {% include "_partials/header.njk" %}
+    {% endif %}
 
     {% block content %}{% endblock %}
 
-    {% include "_partials/footer.njk" %}
-    
-    <div class="container">
-        <p>Cоздатели сайта: {{developers}}</p>
-    </div>
-
-
-    <!-- build:js(.) scripts/vendor.min.js -->
-    <!-- bower:js -->
-
-    {# {{ 'markup' variable is delivered from gulpfile's 'views' task data object #}
-    {% if markup %}
-    <script src="node_modules/jquery/dist/jquery.js"></script>
+     {% if not indexPage %}
+      {% include "_partials/footer.njk" %}
     {% endif %}
+    
+    
+    <!-- build:js scripts/jquery.min.js -->
+    <!-- bower:js -->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
 
-    <script src="node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+    <!-- build:js scripts/vendor.min.js -->
+    <!-- bower:js -->
+    
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 
-    <!-- build:js(.tmp) scripts/main.min.js -->
-    <script src="scripts/main.js"></script>
-    <!-- endbuild -->
+    <script src="scripts/app.js"></script>
 
 </body>
 </html>

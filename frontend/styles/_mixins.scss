@@ -1,0 +1,39 @@
+// workaround for native css min/max functions and sass
+@function max($numbers...) {
+  @return m#{a}x(#{$numbers})
+};
+  
+
+@function min($numbers...) {
+   @return m#{i}n(#{$numbers})
+};
+ 
+
+@mixin imageFit(){
+  position: relative;
+  img {
+    vertical-align: top;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    backface-visibility: hidden;
+
+    @supports (object-fit: cover) {
+        position: static;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: none;
+    }
+  }
+}
+
+
+@mixin focus-outline {
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba($c-base,.25);
+  }
+}
+
